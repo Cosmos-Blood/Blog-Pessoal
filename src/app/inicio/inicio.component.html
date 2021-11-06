@@ -1,1 +1,79 @@
-<p>inicio works!</p>
+<!--Mensagem de Boas Vindas-->
+<div class="container-fluid">
+  <div class="row d-flex  bg-secondary align-items-center">
+    <div class="col-md-6">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 text-white my-5">
+          <h1 class="fs-54">Seja Bem Vindo(a)!</h1>
+          <h4 class="fs-18">Blog Pessoal aberto a todos!</h4>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center mb-5">
+        <div class="col-md-6">
+          <button class="btn btn-dark mr-4" data-toggle="modal" data-target="#novaPostagem">Nova postagem</button>
+          <a class="btn btn-outline-light" href="#postagens">Todas postagens</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6  d-flex justify-content-center">
+        <img src="https://i.imgur.com/YGMJLba.png" width="500"/>
+    </div>
+</div>
+</div>
+
+
+<div class="container my-5" id="postagens">
+    <!--NavsTabs-->
+<ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="nav-todasPostagens-tab" data-toggle="tab" href="#todasPostagens" role="tab" aria-controls="todasPostagens" aria-selected="true">Todas Postagens</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="nav-procurarPostagens-tab" data-toggle="tab" href="#procurarPostagens" role="tab" aria-controls="profile" aria-selected="false">Procurar Postagens</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    
+    <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">Fique por dentro de todas as postagens feitas em nosso blog!</div>
+    
+    <div class="tab-pane fade" id="procurarPostagens" role="tabpanel" aria-labelledby="nav-procurarPostagens-tab">Procurar uma postagem a partir de seu tema:</div>
+  </div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="novaPostagemLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="novaPostagemLabel">Crie sua postagem!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="form-group">
+                <label for="titulo">Tíulo:</label>
+                <input type="text" class="form-control" id="titulo" placeholder="Digite o título">
+          </div>
+
+          <div class="form-group">
+            <label for="texto">Texto:</label>
+            <textarea class="form-control" name="texto" id="texto" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tema">Selecione um tema ou <a href="">crie um novo</a> :</label>
+        <select class="form-control" name="tema" id="tema">
+            <option value="">Temas</option>
+        </select>
+  </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success">Publicar</button>
+        </div>
+      </div>
+    </div>
+  </div>

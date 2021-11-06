@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { UsuarioLoginDTO } from '../model/UsuarioLoginDTO';
 import { UsuarioModel } from '../model/UsuarioModel';
 
@@ -18,5 +19,13 @@ export class AuthService {
   }
   cadastrar(usuario: UsuarioModel): Observable<UsuarioModel>{
     return this.http.post<UsuarioModel>('https://bloguinh0pessoal.herokuapp.com/usuario/criar', usuario)
+  }
+  logado(){
+    let ok: boolean = false;
+
+    if(environment.token != ""){
+      ok = true;
+    }
+      return ok
   }
 }
