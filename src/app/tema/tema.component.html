@@ -37,16 +37,16 @@
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Temas</th>
-                    <th scope="col" class="d-flex justify-content-end mr-5"> <-Opções</th>
+                    <th scope="col" class="text-center"> Opções</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor='let itemTema of listaTema'>
                     <th scope="row">{{itemTema.idTema}}</th>
                     <td>{{itemTema.tema}}</td>
-                    <td class="d-flex justify-content-end mr-5">
-                  <button class="btn btn-info rounded">Editar</button>
-                  <button class="btn btn-danger rounded ml-5">Excluir</button>
+                    <td class="d-flex justify-content-center">
+                  <button class="btn btn-info rounded" [routerLink]="['/tema-edit', itemTema.idTema]">Editar</button>
+                  <button class="btn btn-danger rounded ml-5" [routerLink]="['/tema-delete', itemTema.idTema]">Excluir</button>
                     </td>
                   </tr>
             
