@@ -23,6 +23,7 @@ export class TemaEditComponent implements OnInit {
     if(environment.token == ''){
       this.router.navigate(['/entrar'])
     }
+    this.temaService.refreshToken()
 
     let id = this.route.snapshot.params['idTema']
     this.findByIdTema(id)
