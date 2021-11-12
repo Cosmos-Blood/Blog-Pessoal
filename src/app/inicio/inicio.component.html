@@ -24,21 +24,84 @@
 
 <div class="container my-5" id="postagens">
     <!--NavsTabs-->
-<ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+    <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+  
+      <!--Todas Postagens-->
     <li class="nav-item" role="presentation">
       <a class="nav-link active" id="nav-todasPostagens-tab" data-toggle="tab" href="#todasPostagens" role="tab" aria-controls="todasPostagens" aria-selected="true">Todas Postagens</a>
     </li>
+    <!--Todas Postagens-->
+
+    
+    <!--Procurar Postagens-->
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="nav-procurarPostagens-tab" data-toggle="tab" href="#procurarPostagens" role="tab" aria-controls="profile" aria-selected="false">Procurar Postagens</a>
+      <a class="nav-link" id="nav-procurarPostagens-tab" data-toggle="tab" href="#procurarPostagens" role="tab" aria-controls="procurarPostagens" aria-selected="false">Procurar Postagens</a>
     </li>
+    <!--Procurar Postagens-->
+    
+    <!--Minhas Postagens-->
+    <li class="nav-item" role="presentation">
+      <a (click)='findByIdUser()' class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Minhas Postagens</a>
+    </li>
+    <!--Minhas Postagens-->
+    
   </ul>
   <div class="tab-content" id="myTabContent">
     
-    <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">Fique por dentro de todas as postagens feitas em nosso blog!</div>
+    <!--Conteúdo: Todas Postagens-->
+    <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
+      
+      <div class="card mb-3">
+        <div *ngFor='let item of listaPostagem' class="card-body">
+          <h5 class="card-title">{{item.tituloPostagem}}</h5>
+          <small>Tema: {{item.temaRelacionado.tema}}</small>
+          <p class="card-text">{{item.textoPostagem}}</p>
+          <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
+          <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p>
+          <!-- <div class="bg-dark">
+          <img src="..." class="card-img-bottom" alt="...">
+        </div> -->
+        </div>
+    </div>
     
-    <div class="tab-pane fade" id="procurarPostagens" role="tabpanel" aria-labelledby="nav-procurarPostagens-tab">Procurar uma postagem a partir de seu tema:</div>
+  </div>
+  <!--Conteúdo: Todas Postagens-->
+
+  <!--Conteúdo: Procurar Postagens-->
+  <div class="tab-pane fade" id="procurarPostagens" role="tabpanel" aria-labelledby="nav-procurarPostagens-tab">
+
+    <div *ngFor='let tema of listaTema' class="card mb-3">
+      <div *ngFor='let item of tema.postagens' class="card-body">
+        <h5 class="card-title">{{item.tituloPostagem}}</h5>
+        <p class="card-text">{{item.textoPostagem}}</p>
+        <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
+        <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p>
+        <!-- <div class="bg-dark">
+        <img src="..." class="card-img-bottom" alt="...">
+      </div> -->
+      </div>
+  </div>
+  </div>
+
+  <!--Conteúdo: Procurar Postagens-->
+
+  <!--Conteúdo: Minhas Postagens-->
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    
+    <div class="card mb-3">
+    <div *ngFor='let item of user.minhasPostagens' class="card-body">
+      <h5 class="card-title">{{item.tituloPostagem}}</h5>
+      <small>Tema: {{item.temaRelacionado.tema}}</small>
+      <p class="card-text">{{item.textoPostagem}}</p>
+      <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
+      <!-- <div class="bg-dark">
+      <img src="..." class="card-img-bottom" alt="...">
+    </div> -->
+    </div>
+    </div>
   </div>
 </div>
+<!--Conteúdo: Minhas Postagens-->
   
   <!-- Modal -->
   <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="novaPostagemLabel" aria-hidden="true">

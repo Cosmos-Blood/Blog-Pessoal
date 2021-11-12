@@ -16,6 +16,7 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
 
   postagem: PostagemModel = new PostagemModel()
+  listaPostagem: PostagemModel[]
   
   listaTema: TemaModel[]
   temaId: number
@@ -38,8 +39,11 @@ export class InicioComponent implements OnInit {
       this.router.navigate(['/entrar'])
     }
     this.temaService.refreshToken()
+    this.postagemService.refreshToken()
+    this.auth.refreshToken()
 
     this.getAllTemas()
+    this.getAllPostagens()
   }
 getAllTemas(){
   this.temaService.getAllTema().subscribe((resp: TemaModel[]) => {
@@ -49,6 +53,12 @@ getAllTemas(){
 findByIdTema(){
   this.temaService.getByIdTema(this.temaId).subscribe((resp: TemaModel) =>{
     this.tema = resp
+  })
+}
+
+getAllPostagens(){
+  this.postagemService.getAllPostagens().subscribe((resp: PostagemModel[]) => {
+    this.listaPostagem = resp
   })
 }
 
@@ -63,6 +73,14 @@ findByIdTema(){
       this.postagem = resp
       alert('Postagem criada!')
       this.postagem = new PostagemModel()
+      this.getAllPostagens()
+    })
+  }
+
+
+  findByIdUser(){
+    this.auth.getByIdUser(this.idUser).subscribe((resp: UsuarioModel) => {
+      this.user = resp
     })
   }
 }

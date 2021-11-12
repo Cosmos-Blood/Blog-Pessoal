@@ -7,5 +7,6 @@ export class PostagemModel{
     public textoPostagem: string;
     public tituloPostagem: string;
     public usuarioCriador: UsuarioModel;
+    public dataPostagem: Date;
     
 }
