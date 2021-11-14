@@ -23,7 +23,7 @@ sair(){
   this.router.navigate(['/entrar'])
   environment.foto = ''
   environment.nome = ''
-  environment.id = 9
+  environment.id = 0
   environment.token = ''
 }
 }

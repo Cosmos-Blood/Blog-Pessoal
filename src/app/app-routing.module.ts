@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: "tema-delete/:idTema", component: TemaDeleteComponent},
     {path: "postagem-edit/:idPostagem", component: PostagemEditComponent},
     {path: "postagem-delete/:idPostagem", component: PostagemDeleteComponent},
-    {path: "usuario-edit/:idUsuario", component: UsuarioEditComponent}
+    {path: "usuario-edit/:id", component: UsuarioEditComponent}
 ];
 @NgModule({
  imports: [RouterModule.forRoot(routes)],
