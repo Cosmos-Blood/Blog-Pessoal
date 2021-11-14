@@ -53,11 +53,11 @@
       
       <div class="card mb-3">
         <div *ngFor='let item of listaPostagem' class="card-body">
-          <h5 class="card-title">{{item.tituloPostagem}}</h5>
+          <h5 class="card-title d-flex justify-content-center">{{item.tituloPostagem}}</h5>
           <small>Tema: {{item.temaRelacionado.tema}}</small>
           <p class="card-text">{{item.textoPostagem}}</p>
           <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
-          <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p>
+          <!-- <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p> -->
           <!-- <div class="bg-dark">
           <img src="..." class="card-img-bottom" alt="...">
         </div> -->
@@ -72,10 +72,10 @@
 
     <div *ngFor='let tema of listaTema' class="card mb-3">
       <div *ngFor='let item of tema.postagens' class="card-body">
-        <h5 class="card-title">{{item.tituloPostagem}}</h5>
+        <h5 class="card-title d-flex justify-content-center">{{item.tituloPostagem}}</h5>
         <p class="card-text">{{item.textoPostagem}}</p>
         <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
-        <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p>
+        <!-- <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p> -->
         <!-- <div class="bg-dark">
         <img src="..." class="card-img-bottom" alt="...">
       </div> -->
@@ -90,14 +90,24 @@
     
     <div class="card mb-3">
     <div *ngFor='let item of user.minhasPostagens' class="card-body">
-      <h5 class="card-title">{{item.tituloPostagem}}</h5>
+      <div class="row d-flex col-md-12"> 
+      <h5 class="card-title d-flex justify-content-center col-md-11">{{item.tituloPostagem}}</h5>
+      <div class="dropdown d-flex col-md-1">
+        <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item text-white" [routerLink]="['/postagem-edit', item.idPostagem]">Editar</a>
+          <a class="dropdown-item text-danger" [routerLink]="['/postagem-delete', item.idPostagem]">Deletar</a>
+        </div>
+      </div>
+      </div>
       <small>Tema: {{item.temaRelacionado.tema}}</small>
       <p class="card-text">{{item.textoPostagem}}</p>
       <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
       <!-- <div class="bg-dark">
       <img src="..." class="card-img-bottom" alt="...">
     </div> -->
-    </div>
+  </div>
     </div>
   </div>
 </div>
@@ -140,3 +150,4 @@
       </div>
     </div>
   </div>
+  <!--Modal-->

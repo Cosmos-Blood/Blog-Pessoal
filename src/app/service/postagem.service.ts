@@ -22,8 +22,17 @@ export class PostagemService {
   getAllPostagens(): Observable<PostagemModel[]>{
     return this.http.get<PostagemModel[]>('https://bloguinh0pessoal.herokuapp.com/postagens/lista', this.token)
   }
+  getByIdPostagem(idPostagem: number): Observable<PostagemModel>{
+    return this.http.get<PostagemModel>(`https://bloguinh0pessoal.herokuapp.com/postagens/pesquisar/id/${idPostagem}`, this.token)
+  }
   postPostagem(postagem: PostagemModel): Observable<PostagemModel>{
     return this.http.post<PostagemModel>('https://bloguinh0pessoal.herokuapp.com/postagens/publicar', postagem, this.token)
+  }
+  putPostagem(postagem: PostagemModel): Observable<PostagemModel>{
+    return this.http.put<PostagemModel>('https://bloguinh0pessoal.herokuapp.com/postagens/atualizar', postagem, this.token)
+  }
+  deletePostagem(idPostagem: number){
+    return this.http.delete(`https://bloguinh0pessoal.herokuapp.com/postagens/deletar/${idPostagem}`, this.token)
   }
 }
 
