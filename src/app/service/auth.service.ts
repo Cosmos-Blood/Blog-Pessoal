@@ -27,6 +27,9 @@ export class AuthService {
   cadastrar(usuario: UsuarioModel): Observable<UsuarioModel>{
     return this.http.post<UsuarioModel>('https://bloguinh0pessoal.herokuapp.com/usuario/criar', usuario)
   }
+  atualizar(usuario: UsuarioModel): Observable<UsuarioModel>{
+    return this.http.put<UsuarioModel>('https://bloguinh0pessoal.herokuapp.com/usuario/atualizar', usuario, this.token)
+  }
   logado(){
     let ok: boolean = false;
 

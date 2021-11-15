@@ -11,13 +11,13 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class UsuarioEditComponent implements OnInit {
 
-  usuario: UsuarioModel = new UsuarioModel()
   idUsuario: number
+  usuario: UsuarioModel = new UsuarioModel()
   confirmarSenha: string
   tipoDeUsuario: string
 
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -29,7 +29,7 @@ export class UsuarioEditComponent implements OnInit {
       alert('Sua sessão foi encerrada, faça o login novamente!')
       this.router.navigate(['/entrar'])
     }
-    this.auth.refreshToken()
+    this.authService.refreshToken()
 
     this.idUsuario = this.route.snapshot.params['id']
     this.findByIdUsuario(this.idUsuario)
@@ -42,26 +42,25 @@ export class UsuarioEditComponent implements OnInit {
     this.tipoDeUsuario = event.target.value
   }
   atualizar(){
-    console.log(this.usuario)
     this.usuario.tipo = this.tipoDeUsuario
 
     if(this.usuario.senha != this.confirmarSenha){
       alert("As senhas não estão parelhas!")
     } else {
-      this.auth.cadastrar(this.usuario).subscribe((resp: UsuarioModel) => {
+      this.authService.atualizar(this.usuario).subscribe((resp: UsuarioModel) => {
         this.usuario = resp
         this.router.navigate(['/entrar'])
         alert('Usuário atualizado com sucesso! Faça o login novamente.')
-          environment.foto = ''
-          environment.nome = ''
-          environment.id = 0
-          environment.token = ''
+        environment.foto = ''
+        environment.nome = ''
+        environment.id = 0
+        environment.token = ''
       })
     }
   }
   
   findByIdUsuario(id: number){
-    this.auth.getByIdUser(id).subscribe((resp: UsuarioModel) => {
+    this.authService.getByIdUser(id).subscribe((resp: UsuarioModel) => {
       this.usuario = resp
     })
   }
