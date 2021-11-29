@@ -51,13 +51,14 @@
     <!--Conteúdo: Todas Postagens-->
     <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
       
-      <div class="card mb-3">
-        <div *ngFor='let item of listaPostagem' class="card-body">
+      <div *ngFor='let item of listaPostagem' class="card mb-3">
+        <div  class="card-body">
+          <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p>
           <h5 class="card-title d-flex justify-content-center">{{item.tituloPostagem}}</h5>
           <small>Tema: {{item.temaRelacionado.tema}}</small>
           <p class="card-text">{{item.textoPostagem}}</p>
           <p class="card-text"><small class="text-muted">Publicado em {{item.dataPostagem | date: 'dd/MM/yyyy'}}</small></p>
-          <!-- <p class="card-text"><small class="text-muted">Postado por: {{item.usuarioCriador.nome}}</small></p> -->
+          <hr>
           <!-- <div class="bg-dark">
           <img src="..." class="card-img-bottom" alt="...">
         </div> -->
@@ -110,8 +111,8 @@
   </div>
     </div>
   </div>
+  <!--Conteúdo: Minhas Postagens-->
 </div>
-<!--Conteúdo: Minhas Postagens-->
   
   <!-- Modal -->
   <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="novaPostagemLabel" aria-hidden="true">
